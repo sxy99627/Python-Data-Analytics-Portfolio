@@ -27,24 +27,24 @@
 - reservation_status / reservation_status_date：最终预订状态及日期
 ## **分析流程**
 ### **1. 数据清洗**
-**处理缺失值**：
-children：4 条缺失，用中位数填充。
-country：488 条缺失，用众数填充。
-agent：16340 条缺失，用 0 填充（表示无代理）。
-company：缺失率 94.3%，直接删除该列。
+**处理缺失值**：  
+children：4 条缺失，用中位数填充。  
+country：488 条缺失，用众数填充。  
+agent：16340 条缺失，用 0 填充（表示无代理）。  
+company：缺失率 94.3%，直接删除该列。  
 
-**处理不一致数据**：
-将 meal 中的 "Undefined" 统一替换为 "SC"。
-将children、agent修改数据类型。
+**处理不一致数据**：  
+将 meal 中的 "Undefined" 统一替换为 "SC"。  
+将children、agent修改数据类型。  
 
-**处理无效数据**：
-删除 adults+children+babies = 0 的行。
-删除 adr > 5000 的离群值。
+**处理无效数据**：  
+删除 adults+children+babies = 0 的行。  
+删除 adr > 5000 的离群值。  
 
-**衍生新特征**：
-合并 arrival_date_year、arrival_month、arrival_date_day_of_month 生成 arrival_date 日期列。
-计算总住宿晚数 stays_nights_total = stays_in_weekend_nights + stays_in_week_nights。
-计算总人数 number_of_people = adults + children + babies。
+**衍生新特征**：  
+合并 arrival_date_year、arrival_month、arrival_date_day_of_month 生成 arrival_date 日期列。  
+计算总住宿晚数 stays_nights_total = stays_in_weekend_nights + stays_in_week_nights。  
+计算总人数 number_of_people = adults + children + babies。  
 ### **2. 探索性分析**
 **基本指标**：
 城市酒店预订量占 66.4%，度假酒店占 33.6%。
